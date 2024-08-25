@@ -15,3 +15,12 @@ token:String,
 user:User
 }
 `;
+
+exports.createUserInput = `
+input createUserInput {
+username:String
+email:String
+phone:String
+password:String
+}
+`;

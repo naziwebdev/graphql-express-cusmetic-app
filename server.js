@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const ApolloServer = require("apollo-server-express");
 const mongoose = require("mongoose");
+const schema = require('./graphql/index.schema')
 require("dotenv").config();
 
 const app = express();

@@ -7,3 +7,12 @@ count:Int
 isDeliver: Boolean
 }
 `;
+
+exports.CreateOrderInput = `
+input CreateOrderInput {
+cusmetic:Cusmetic
+user:User
+count:Int
+
+}
+`;

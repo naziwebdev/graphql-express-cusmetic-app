@@ -4,9 +4,12 @@ exports.registerValidator = yup.object({
   username: yup
     .string()
     .min(3, "this field must be at least 3 chars")
-    .optional(),
+    .required("username is required"),
   email: yup.string().email("email format in incorrect").optional(),
-  phone: yup.string().matches(/^09[0-9]{9}$/),
+  phone: yup
+    .string()
+    .matches(/^09[0-9]{9}$/)
+    .required("phone is required"),
   password: yup
     .string()
     .required("password is required")

@@ -10,8 +10,8 @@ isDeliver: Boolean
 
 exports.CreateOrderInput = `
 input CreateOrderInput {
-cusmetic:Cusmetic
-user:User
+cusmetic:ID
+user:ID
 count:Int
 
 }

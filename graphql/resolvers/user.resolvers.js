@@ -10,9 +10,9 @@ module.exports = {
 
       await registerValidator.validate({ username, email, phone, password });
 
-      const isExistUser = await UserModel.findOne({phone})
-      if(isExistUser){
-        throw new Error('user exist already')
+      const isExistUser = await UserModel.findOne({ phone });
+      if (isExistUser) {
+        throw new Error("user exist already");
       }
 
       const countUser = await UserModel.countDocuments();
@@ -37,6 +37,16 @@ module.exports = {
       };
     } catch (err) {
       throw new Error(err);
+    }
+  },
+
+  users: async () => {
+    try {
+      const users = await UserModel.find({}, "-password").lean();
+
+      return users;
+    } catch (error) {
+      throw new Error(error);
     }
   },
 };

@@ -1,7 +1,10 @@
 const userResolvers = require("./resolvers/user.resolvers");
 
 const RootResolvers = {
-  Query: {},
+  Query: {
+    users:userResolvers.users
+    
+  },
 
   Mutation: {
     registerUser: userResolvers.registerUser,

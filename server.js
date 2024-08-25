@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const ApolloServer = require("apollo-server-express");
+const {ApolloServer} = require("apollo-server-express");
 const mongoose = require("mongoose");
-const schema = require('./graphql/index.schema')
+const schema = require("./graphql/index.schema");
+const resolvers = require("./graphql/index.resolvers");
 require("dotenv").config();
 
 const app = express();
@@ -21,14 +22,13 @@ const startServer = async () => {
 
   await server.start();
 
-  server.applyMiddleware({app})
-
+  server.applyMiddleware({ app });
 };
 
 startServer();
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
-app.listen( port , () => {
-    console.log(`Server running on port ${port}`);
-  });
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

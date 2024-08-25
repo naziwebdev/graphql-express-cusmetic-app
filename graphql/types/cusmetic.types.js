@@ -2,10 +2,10 @@ exports.Cusmetic = `
 type Cusmetic {
 _id:ID
 title:String
-price:Number
+price:Int
 image:String
 category:Category
-countAvailabe:Number
+countAvailabe:Int
 }
 `;
 

@@ -2,11 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const ApolloServer = require("apollo-server-express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1/store");
+mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.once("open", () => {
   console.log("Connected DB Successfully");
 });
@@ -25,6 +26,8 @@ const startServer = async () => {
 
 startServer();
 
-app.listen(4005, () => {
-    console.log("Server running on port 4004");
+const port = process.env.PORT
+
+app.listen( port , () => {
+    console.log(`Server running on port ${port}`);
   });

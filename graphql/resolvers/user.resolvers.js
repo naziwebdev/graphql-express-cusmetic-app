@@ -40,6 +40,13 @@ module.exports = {
     }
   },
 
+  loginUser: async (_, args) => {
+    try {
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+
   users: async () => {
     try {
       const users = await UserModel.find({}, "-password").lean();

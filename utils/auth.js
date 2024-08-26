@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/User");
+const { GraphQLError } = require("graphql");
 
 const validateToken = async (req) => {
   if (req) {
     const authHeader = req.headers.authorization;
     if (authHeader) {
-      const token = authHeader.split(" ")[1]
-      console.log(token)
+      const token = authHeader.split(" ")[1];
       if (!token) {
         throw new Error("token not found");
       }
@@ -28,5 +28,4 @@ const validateToken = async (req) => {
   }
 };
 
-
-module.exports = {validateToken} 
+module.exports = { validateToken };

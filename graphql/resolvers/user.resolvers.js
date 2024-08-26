@@ -87,6 +87,7 @@ module.exports = {
 
       if (user.role !== 'ADMIN') {
         throw new Error("access this route is forbidden");
+     
       }
       const users = await UserModel.find({}, "-password").lean();
 

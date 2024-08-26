@@ -31,4 +31,8 @@ module.exports = {
       throw new Error(error);
     }
   },
+
+  cusmetices: async () => {
+    return await CusmeticModel.find({}).populate("category")
+  }
 };

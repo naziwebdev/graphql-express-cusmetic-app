@@ -5,7 +5,8 @@ const categoryResolvers = require(".//resolvers/category.resolvers");
 const RootResolvers = {
   Query: {
     users: userResolvers.users,
-    categories:categoryResolvers.categories
+    categories:categoryResolvers.categories,
+    cusmetices:cusmeticResolvers.cusmetices
   },
 
   Mutation: {

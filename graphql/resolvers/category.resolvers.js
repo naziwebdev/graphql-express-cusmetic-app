@@ -1,3 +1,4 @@
+const { isValidObjectId } = require("mongoose");
 const CategoryModel = require("../../models/Category");
 const { validateToken } = require("../../utils/auth");
 const { categoryValidator } = require("../../validators/Category.validator");
@@ -30,5 +31,22 @@ module.exports = {
 
   categories: async () => {
     return await CategoryModel.find({}).lean();
+  },
+  removeCategory: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { id } = args;
+
+      if (!isValidObjectId) {
+        throw new Error("id is invalid");
+      }
+
+      return await CategoryModel.findOneAndDelete({ _id: id });
+    } catch (error) {
+      throw new Error(error);
+    }
   },
 };

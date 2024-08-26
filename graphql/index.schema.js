@@ -30,6 +30,7 @@ addCategory(title:String!):Category
 createOrder(input:CreateOrderInput!):Order
 deliverOrder(id:ID!):Order
 removeOrder(id:ID!):Order
+removeCategory(id:ID!):Category
 loginUser(identifier:String!,password:String!):Auth
 registerUser(input:createUserInput!):Auth
 

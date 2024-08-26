@@ -11,7 +11,6 @@ isDeliver: Boolean
 exports.CreateOrderInput = `
 input CreateOrderInput {
 cusmetic:ID
-user:ID
 count:Int
 
 }

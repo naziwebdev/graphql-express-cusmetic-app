@@ -5,9 +5,5 @@ exports.orderValidator = yup.object({
     .string()
     .matches(/^[0-9a-fA-F]{24}$/, "id is invalid")
     .required("this field is required"),
-  user: yup
-    .string()
-    .matches(/^[0-9a-fA-F]{24}$/, "id is invalid")
-    .required("this field is required"),
   count: yup.number().required("this field is required"),
 });

@@ -5,7 +5,7 @@ title:String
 price:Int
 image:String
 category:Category
-countAvailabe:Int
+countAvailable:Int
 }
 `;
 

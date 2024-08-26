@@ -1,5 +1,6 @@
 const CategoryModel = require("../../models/Category");
 const { validateToken } = require("../../utils/auth");
+const { categoryValidator } = require("../../validators/Category.validator");
 
 module.exports = {
   addCategory: async (_, args, context) => {
@@ -11,6 +12,8 @@ module.exports = {
       }
 
       const { title } = args;
+
+      await categoryValidator.validate({ title });
 
       const existCategory = await CategoryModel.findOne({ title });
       if (existCategory) {

@@ -18,7 +18,7 @@ const schema = new mongoose.Schema(
       ref: "Category",
       required:true
     },
-    countAvailabe: {
+    countAvailable: {
       type: Number,
       required: true,
     },

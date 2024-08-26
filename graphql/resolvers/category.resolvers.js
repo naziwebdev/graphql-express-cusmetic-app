@@ -49,4 +49,27 @@ module.exports = {
       throw new Error(error);
     }
   },
+  editCategory: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { title, id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      await categoryValidator.validate({ title });
+
+      return await CategoryModel.findOneAndUpdate(
+        { _id: id },
+        { title },
+        { new: true }
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };

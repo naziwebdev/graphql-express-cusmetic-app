@@ -33,6 +33,7 @@ removeOrder(id:ID!):Order
 removeCategory(id:ID!):Category
 removeUser(id:ID!):User
 removeCusmetic(id:ID!):Cusmetic
+editCategory(title:String,id:ID!):Category
 loginUser(identifier:String!,password:String!):Auth
 registerUser(input:createUserInput!):Auth
 

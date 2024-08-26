@@ -26,6 +26,6 @@ module.exports = {
   },
 
   categories: async () => {
-    
-  }
+    return await CategoryModel.find({}).lean();
+  },
 };

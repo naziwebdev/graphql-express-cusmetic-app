@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const { registerValidator } = require("../../validators/register.validator");
 const { loginValidator } = require("../../validators/login.validator");
 const { validateToken } = require("../../utils/auth");
+const { isValidObjectId } = require("mongoose");
 
 module.exports = {
   registerUser: async (_, args) => {
@@ -104,6 +105,32 @@ module.exports = {
       if (!mainUser) {
         throw new Error("user not found");
       }
+
+      return mainUser;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+
+  removeUser: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      const mainUser = await UserModel.findOne({ _id:id}, "-password");
+
+      if (!mainUser) {
+        throw new Error("user not found");
+      }
+
+      await UserModel.findOneAndDelete({ _id: id });
 
       return mainUser;
     } catch (error) {

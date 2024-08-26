@@ -10,8 +10,8 @@ const RootResolvers = {
     cusmetices: cusmeticResolvers.cusmetices,
     cusmetic: cusmeticResolvers.cusmetic,
     getMe: userResolvers.getMe,
-    order:orderResolvers.order,
-    orders:orderResolvers.orders
+    order: orderResolvers.order,
+    orders: orderResolvers.orders,
   },
 
   Mutation: {
@@ -21,8 +21,9 @@ const RootResolvers = {
     addCategory: categoryResolvers.addCategory,
     createOrder: orderResolvers.createOrder,
     deliverOrder: orderResolvers.deliverOrder,
-    removeOrder:orderResolvers.removeOrder,
-    removeCategory:categoryResolvers.removeCategory
+    removeOrder: orderResolvers.removeOrder,
+    removeCategory: categoryResolvers.removeCategory,
+    removeUser: userResolvers.removeUser,
   },
 };
 

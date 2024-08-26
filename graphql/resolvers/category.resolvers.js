@@ -40,7 +40,7 @@ module.exports = {
       }
       const { id } = args;
 
-      if (!isValidObjectId) {
+      if (!isValidObjectId(id)) {
         throw new Error("id is invalid");
       }
 

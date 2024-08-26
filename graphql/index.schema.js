@@ -32,6 +32,7 @@ deliverOrder(id:ID!):Order
 removeOrder(id:ID!):Order
 removeCategory(id:ID!):Category
 removeUser(id:ID!):User
+removeCusmetic(id:ID!):Cusmetic
 loginUser(identifier:String!,password:String!):Auth
 registerUser(input:createUserInput!):Auth
 

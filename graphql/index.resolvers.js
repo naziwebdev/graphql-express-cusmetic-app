@@ -23,6 +23,7 @@ const RootResolvers = {
     deliverOrder: orderResolvers.deliverOrder,
     removeOrder: orderResolvers.removeOrder,
     removeCategory: categoryResolvers.removeCategory,
+    removeCusmetic:cusmeticResolvers.removeCusmetic,
     removeUser: userResolvers.removeUser,
   },
 };

@@ -46,4 +46,23 @@ module.exports = {
       throw new Error(error);
     }
   },
+  removeCusmetic: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      return await CusmeticModel.findOneAndDelete({ _id: id }).populate(
+        "category"
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };

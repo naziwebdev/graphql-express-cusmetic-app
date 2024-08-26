@@ -91,4 +91,18 @@ module.exports = {
       throw new Error(error);
     }
   },
+  orders: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+
+      return await OrderModel.find({}).populate("user", "-password").populate("cusmetic");
+
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };

@@ -15,6 +15,7 @@ ${userTypes.createUserInput}
 type Query {
 categories : [Category]!
 cusmetices : [Cusmetic]!
+orders:[Order]!
 users:[User]!
 cusmetic(id:ID!):Cusmetic
 order(id:ID!):Order

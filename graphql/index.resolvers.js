@@ -10,7 +10,8 @@ const RootResolvers = {
     cusmetices: cusmeticResolvers.cusmetices,
     cusmetic: cusmeticResolvers.cusmetic,
     getMe: userResolvers.getMe,
-    order:orderResolvers.order
+    order:orderResolvers.order,
+    orders:orderResolvers.orders
   },
 
   Mutation: {

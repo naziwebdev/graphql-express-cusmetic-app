@@ -54,4 +54,20 @@ module.exports = {
       throw new Error(error);
     }
   },
+
+  order: async (_, args) => {
+    try {
+      const { id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      return await OrderModel.findOne({ _id: id })
+        .populate("user", "-password")
+        .populate("cusmetic");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };

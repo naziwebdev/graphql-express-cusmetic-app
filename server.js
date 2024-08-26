@@ -18,6 +18,7 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
+    context: ({ req }) => ({ req }),
   });
 
   await server.start();

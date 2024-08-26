@@ -5,7 +5,8 @@ const validateToken = async (req) => {
   if (req) {
     const authHeader = req.headers.authorization;
     if (authHeader) {
-      const token = authHeader.replace("Bearer ", "");
+      const token = authHeader.split(" ")[1]
+      console.log(token)
       if (!token) {
         throw new Error("token not found");
       }

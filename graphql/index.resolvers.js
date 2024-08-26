@@ -8,6 +8,7 @@ const RootResolvers = {
     categories:categoryResolvers.categories,
     cusmetices:cusmeticResolvers.cusmetices,
     cusmetic:cusmeticResolvers.cusmetic,
+    getMe:userResolvers.getMe
   },
 
   Mutation: {

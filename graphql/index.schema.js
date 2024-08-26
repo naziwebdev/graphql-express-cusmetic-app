@@ -18,6 +18,7 @@ cusmetices : [Cusmetic]!
 users:[User]!
 cusmetic(id:ID!):Cusmetic
 order(id:ID!):Order
+getMe:User
 
 }
 

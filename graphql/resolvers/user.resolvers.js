@@ -81,17 +81,31 @@ module.exports = {
     }
   },
 
-  users: async (_,args,context) => {
+  users: async (_, args, context) => {
     try {
       const user = await validateToken(context.req);
 
-      if (user.role !== 'ADMIN') {
+      if (user.role !== "ADMIN") {
         throw new Error("access this route is forbidden");
-     
       }
       const users = await UserModel.find({}, "-password").lean();
 
       return users;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+
+  getMe: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+
+      const mainUser = await UserModel.findOne({ _id: user._id }, "-password");
+      if (!mainUser) {
+        throw new Error("user not found");
+      }
+
+      return mainUser;
     } catch (error) {
       throw new Error(error);
     }

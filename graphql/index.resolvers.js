@@ -6,7 +6,8 @@ const RootResolvers = {
   Query: {
     users: userResolvers.users,
     categories:categoryResolvers.categories,
-    cusmetices:cusmeticResolvers.cusmetices
+    cusmetices:cusmeticResolvers.cusmetices,
+    cusmetic:cusmeticResolvers.cusmetic,
   },
 
   Mutation: {

@@ -70,4 +70,25 @@ module.exports = {
       throw new Error(error);
     }
   },
+
+  removeOrder: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      return await OrderModel.findOneAndDelete({ _id: id })
+        .populate("user", "-password")
+        .populate("cusmetic");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };

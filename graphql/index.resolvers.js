@@ -20,6 +20,7 @@ const RootResolvers = {
     addCategory: categoryResolvers.addCategory,
     createOrder: orderResolvers.createOrder,
     deliverOrder: orderResolvers.deliverOrder,
+    removeOrder:orderResolvers.removeOrder
   },
 };
 

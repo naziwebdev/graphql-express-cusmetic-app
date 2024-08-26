@@ -1,6 +1,7 @@
 const OrderModel = require("../../models/Order");
 const { orderValidator } = require("../../validators/order.validator");
 const { validateToken } = require("../../utils/auth");
+const { isValidObjectId } = require("mongoose");
 
 module.exports = {
   createOrder: async (_, args, context) => {
@@ -19,6 +20,34 @@ module.exports = {
         count,
       });
       return await OrderModel.findOne({ _id: order._id })
+        .populate("user", "-password")
+        .populate("cusmetic");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+
+  deliverOrder: async (_, args, context) => {
+    try {
+      const user = await validateToken(context.req);
+
+      if (user.role !== "ADMIN") {
+        throw new Error("access to this route is forbidden");
+      }
+      const { id } = args;
+
+      if (!isValidObjectId(id)) {
+        throw new Error("id is invalid");
+      }
+
+      const deliveredOrder = await OrderModel.findOneAndUpdate(
+        { _id: id },
+        {
+          isDeliver: true,
+        }
+      );
+
+      return await OrderModel.findOne({ _id: deliveredOrder._id })
         .populate("user", "-password")
         .populate("cusmetic");
     } catch (error) {

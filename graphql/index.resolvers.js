@@ -18,6 +18,7 @@ const RootResolvers = {
     addCusmetic: cusmeticResolvers.addCusmetic,
     addCategory: categoryResolvers.addCategory,
     createOrder: orderResolvers.createOrder,
+    deliverOrder: orderResolvers.deliverOrder,
   },
 };
 

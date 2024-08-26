@@ -34,6 +34,7 @@ removeCategory(id:ID!):Category
 removeUser(id:ID!):User
 removeCusmetic(id:ID!):Cusmetic
 editCategory(title:String,id:ID!):Category
+editCusmetic(title:String,price:Int,category:ID,countAvailable:Int,id:ID!):Cusmetic
 loginUser(identifier:String!,password:String!):Auth
 registerUser(input:createUserInput!):Auth
 

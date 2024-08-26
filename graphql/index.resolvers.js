@@ -26,6 +26,7 @@ const RootResolvers = {
     removeCusmetic: cusmeticResolvers.removeCusmetic,
     removeUser: userResolvers.removeUser,
     editCategory: categoryResolvers.editCategory,
+    editCusmetic: cusmeticResolvers.editCusmetic,
   },
 };
 

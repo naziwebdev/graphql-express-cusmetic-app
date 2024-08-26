@@ -6,8 +6,16 @@ const schema = require("./graphql/index.schema");
 const resolvers = require("./graphql/index.resolvers");
 require("dotenv").config();
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: "GET, PUT, POST, DELETE , OPTIONS",
+  credentials: true,
+  allowedHeaders:
+    "Content-Type, Authorization, Content-Length, X-Requested-With",
+  optionsSuccessStatus: 200,
+};
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 
 mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.once("open", () => {
